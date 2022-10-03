@@ -37,7 +37,7 @@ def delete_employee(request, id):
     employee = Employee.objects.get(id=id)
     employee.delete()
     message = messages.error(request, f'You deleted an Employee')
-    return redirect('employee_list')
+    return redirect('employee-list')
 
 class ProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'profile.html'
