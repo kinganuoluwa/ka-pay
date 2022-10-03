@@ -1,24 +1,36 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.views.generic import ListView, TemplateView
 from .models import Employee
 from .forms import CreateEmployee
 
 
-def home(request):
-    return render(request, 'home.html')
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = 'home.html'
 
-@login_required
-def payroll(request):
-    return render(request, 'payroll.html')
+# def home(request):
+#     return render(request, 'home.html')
+class PayrollView(LoginRequiredMixin, TemplateView):
+    template_name = 'payroll.html'
 
-@login_required
-def employee_list(request):
-    employees = Employee.objects.all()
-    context = {
-        'employees':employees
-    }
-    return render(request, 'employee-list.html', context)
+# @login_required
+# def payroll(request):
+#     return render(request, 'payroll.html')
+
+class EmployeeListView(LoginRequiredMixin, ListView):
+    model = Employee
+    template_name = 'employee-list.html'
+    context_object_name = 'employees'
+
+# @login_required
+# def employee_list(request):
+#     employees = Employee.objects.all()
+#     context = {
+#         'employees':employees
+#     }
+#     return render(request, 'employee-list.html', context)
 
 @login_required
 def delete_employee(request, id):
@@ -27,9 +39,12 @@ def delete_employee(request, id):
     message = messages.error(request, f'You deleted an Employee')
     return redirect('employee_list')
 
-@login_required
-def profile(request):
-    return render(request, 'profile.html')
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = 'profile.html'
+
+# @login_required
+# def profile(request):
+#     return render(request, 'profile.html')
 
 @login_required
 def change_password(request):
