@@ -7,6 +7,7 @@ from .forms import UserRegisterForm, CreateEmployee
 
 def home(request):
     return render(request, 'home.html')
+
 @login_required
 def payroll(request):
     return render(request, 'payroll.html')
