@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .models import Employee
-from .forms import UserRegisterForm, CreateEmployee
+from .forms import CreateEmployee
 
 
 def home(request):
@@ -38,20 +38,16 @@ def change_password(request):
 @login_required
 def add_employee(request):
     if request.method == 'POST':
-        user_form = UserRegisterForm(request.POST)
         employee_form = CreateEmployee(request.POST)
-        if user_form.is_valid() and employee_form.is_valid():
+        if employee_form.is_valid():
             first_name = employee_form.cleaned_data.get('first_name')
             last_name = employee_form.cleaned_data.get('last_name')
             messages.success(request, f'You added {first_name} {last_name}!')
-            user_form.save()
             employee_form.save()
             return redirect('employee_list')
     else:
-        user_form = UserRegisterForm()
         employee_form = CreateEmployee()
     context = {
-        'user_form':user_form,
         'employee_form': employee_form
     }
     return render(request, 'employee-add.html', context)
