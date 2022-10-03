@@ -1,113 +1,25 @@
+{% extends 'base2.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{ title }} | KABLOG</title>
-  <script src="{% static 'js/tailwind-css.js' %}"></script>
-  <link rel="stylesheet" href="{% static 'css/flowbite.min.css' %}" />
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: { "50": "#eff6ff", "100": "#dbeafe", "200": "#bfdbfe", "300": "#93c5fd", "400": "#60a5fa", "500": "#3b82f6", "600": "#2563eb", "700": "#1d4ed8", "800": "#1e40af", "900": "#1e3a8a" }
-          }
-        },
-        fontFamily: {
-          'body': [
-            'Roboto',
-            'ui-sans-serif',
-            'system-ui',
-            '-apple-system',
-            'system-ui',
-            'Segoe UI',
-            'Roboto',
-            'Helvetica Neue',
-            'Arial',
-            'Noto Sans',
-            'sans-serif',
-            'Apple Color Emoji',
-            'Segoe UI Emoji',
-            'Segoe UI Symbol',
-            'Noto Color Emoji'
-          ],
-          'sans': [
-            'Roboto',
-            'ui-sans-serif',
-            'system-ui',
-            '-apple-system',
-            'system-ui',
-            'Segoe UI',
-            'Roboto',
-            'Helvetica Neue',
-            'Arial',
-            'Noto Sans',
-            'sans-serif',
-            'Apple Color Emoji',
-            'Segoe UI Emoji',
-            'Segoe UI Symbol',
-            'Noto Color Emoji'
-          ]
-        }
-      }
-    }
-  </script>
-</head>
-
-<body class="bg-gray-800">
-  <section class="h-screen w-5/6 mx-auto">
-    <div class="flex items-center justify-between h-full">
-      <div class="hidden md:block">
-        <img src="{% static 'img/unlock.svg' %}" class="w-full" alt="unlock svg" />
-      </div>
-      <div class="w-5/6 mx-auto">
-        <form>
-          <!-- Email input -->
-          <div class="mb-6">
-            <input type="text"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleFormControlInput2" placeholder="Email address" />
-          </div>
-
-          <!-- Password input -->
-          <div class="mb-6">
-            <input type="password"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              id="exampleFormControlInput2" placeholder="Password" />
-          </div>
-
-          <div class="flex justify-end items-center mb-6">
-            <a href="{% url 'change_password' %}" class="text-gray-100 hover:text-blue-400">Forgot password?</a>
-          </div>
-
-          <div class="text-center lg:text-left">
-            <a href="{% url 'payroll' %}">
-              <button type="button"
-                class="inline-block w-full px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Login
-              </button>
-            </a>
-          </div>
-        </form>
-      </div>
+{% block content %}
+<section class="w-5/6 mx-auto mt-10">
+  <div class="flex items-center justify-between h-full">
+    <div class="hidden md:block">
+      <img src="{% static 'img/unlock.svg' %}" class="w-full" alt="unlock svg" />
     </div>
-  </section>
+    <div class="w-5/6 mx-auto">
+      <p class="text-gray-500 dark:text-gray-400">You have been logged out. <a href="{% url 'login' %}"
+          class="inline-flex items-center font-medium text-blue-600 dark:text-blue-500 hover:underline">
+          Login again
+          <svg aria-hidden="true" class="ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </a></p>
+    </div>
+  </div>
+</section>
 
-  <script src="{% static 'js/flowbite.js' %}"></script>
-  <script src="{% static 'js/main.js' %}"></script>
-  <script>
-    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  </script>
-
-</body>
-
-</html>
+{% endblock %}
