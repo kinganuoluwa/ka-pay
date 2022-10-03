@@ -7,7 +7,7 @@ from .models import Employee
 from .forms import CreateEmployee
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
+class HomeView(TemplateView):
     template_name = 'home.html'
 
 # def home(request):
