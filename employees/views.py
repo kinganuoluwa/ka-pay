@@ -14,8 +14,10 @@ def employee_list(request):
     }
     return render(request, 'employee-list.html', context)
 
-# def employee_delete(request):
-#     return render(request, 'employee-list.html')
+def delete_employee(request, id):
+    employee = Employee.objects.get(id=id)
+    employee.delete()
+    return redirect('employee_list')
 
 def profile(request):
     return render(request, 'profile.html')
