@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-white dark:bg-gray-800 p-5 shadow dark:border rounded-lg dark:border-gray-700 w-full relative mt-10">
+    <div class="md:flex">
+        <div class="flex flex-col my-3 md:mr-10">
+            <span class="text-base font-semibold  text-gray-900 dark:text-white">Total Payroll</span>
+            <span class="text-2xl font-bold  text-gray-900 dark:text-white">#1,934,345</span>
+        </div>
+        <div class="flex flex-col my-3 md:mr-10">
+            <span class="text-base font-semibold  text-gray-900 dark:text-white">Pay Date</span>
+            <span class="text-xl font-bold  text-gray-900 dark:text-white">Friday, Oct. 23, 2022</span>
+        </div>
+        <div class="flex flex-col my-3 md:mr-10">
+            <span class="text-base font-semibold  text-gray-900 dark:text-white">Total Employees to be paid</span>
+            <span class="text-xl font-bold  text-gray-900 dark:text-white">123</span>
+        </div>
+    </div>
+    <p class="text-base font-semibold  text-gray-800 dark:text-gray-200 my-3">Time to kick-back. KAPay will debit #1,934,345 from your account on Friday, Oct. 23, 2022. Please make sure you have this funds available</p>
+
+
+    <!-- <div class="flex absolute bottom-5 left-5 items-center px-3 py-2 text-white bg-blue-600 rounded cursor-pointer">
+        <h3 class="text-lg text-2xl font-semibold  text-white">Run Payroll</h3>
+    </div> -->
+</div>
+
+<div
+    class="my-5 p-3 bg-white dark:bg-gray-800 flex items-center justify-between shadow dark:border rounded-lg dark:border-gray-700">
+    <h3 class="text-lg font-semibold text-2xl dark:text-white">Transactions</h3>
+
+    <div class="mr-2">
+        <select id="months"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white outline-none">
+            <option value="September">January</option>
+            <option value="September">February</option>
+            <option value="September">March</option>
+            <option value="September">April</option>
+            <option value="September">May</option>
+            <option value="September">June</option>
+            <option value="September">July</option>
+            <option value="September">August</option>
+            <option selected="September">September</option>
+            <option value="September">October</option>
+            <option value="September">November</option>
+            <option value="September">December</option>
+        </select>
+    </div>
+</div>
+{% endblock %}
