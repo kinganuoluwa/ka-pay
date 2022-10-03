@@ -23,7 +23,7 @@ def profile(request):
 def change_password(request):
     return render(request, 'change-password.html')
 
-def employee_add(request):
+def add_employee(request):
     if request.method == 'POST':
         user_form = UserRegisterForm(request.POST)
         employee_form = CreateEmployee(request.POST)
