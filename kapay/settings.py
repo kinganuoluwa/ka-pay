@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     'employees',
-    'salaries',
+    'salary',
     "crispy_forms",
     "crispy_tailwind",
 ]
