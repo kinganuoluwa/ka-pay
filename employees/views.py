@@ -59,7 +59,7 @@ def add_employee(request):
             last_name = employee_form.cleaned_data.get('last_name')
             messages.success(request, f'You added {first_name} {last_name}!')
             employee_form.save()
-            return redirect('employee_list')
+            return redirect('employee-list')
     else:
         employee_form = CreateEmployee()
     context = {
