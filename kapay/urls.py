@@ -1,13 +1,15 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from employees import views
+from django.contrib.auth.views import LoginView, LogoutView
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('employees/', views.employee_list, name='employee_list'),
+    path('employees/', include('employees.urls')),
     path('profile/', views.profile, name='profile'),
     path('change-password/', views.change_password, name='change_password'),
-    path('logout/', views.logout, name='logout'),
+    path('login/', LoginView.as_view(template_name = "login.html"), name='login'),
+    path('logout/', LogoutView.as_view(template_name = "logout.html"), name='logout'),
 ]

@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="p-3 flex items-center justify-end">
-    <a href="#"
+    <a href="{% url 'employee_add' %}"
         class="text-gray-800 hover:text-blue-600 dark:text-white dark:hover:text-gray-300 font-medium  text-sm underline">Add
         Employee</a>
 </div>
@@ -20,11 +20,12 @@
             </tr>
         </thead>
         <tbody class="bg-gray-50 divide-y dark:divide-gray-700 dark:bg-gray-800">
+            {% for employee in employees %}
             <tr
                 class="bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                <td class="px-4 py-3 text-sm">#1234</td>
-                <td class="px-4 py-3 text-sm">King Anuoluwa</td>
-                <td class="px-4 py-3 text-sm">Head of Department</td>
+                <td class="px-4 py-3 text-sm">{{ employee.id }}</td>
+                <td class="px-4 py-3 text-sm">{{ employee.first_name }} {{ employee.last_name }}</td>
+                <td class="px-4 py-3 text-sm">{{ employee.position }}</td>
                 <td class="px-4 py-3 text-sm">
                     <span>
                         <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -71,6 +72,7 @@
                     </div>
                 </td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
